@@ -1,14 +1,14 @@
 package theory.graph.ds;
 
 public class WeightedEdge<T> extends Edge<T> {
-    private int weight;
+    private double weight;
 
-    public WeightedEdge(Vertex destination, int weight) {
+    public WeightedEdge(Vertex destination, double weight) {
         super(destination);
         this.weight = weight;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
@@ -16,8 +16,9 @@ public class WeightedEdge<T> extends Edge<T> {
         this.weight = weight;
     }
 
+
     @Override
     public String toString() {
-        return String.format("Edge[destination: %s weight: %d]", super.getDestination(), weight);
+        return String.format("Edge[destination: %s weight: %f]", super.getDestination().getName(), weight);
     }
 }

@@ -19,9 +19,9 @@ public class UndirectedGraph<T> extends Graph<T> {
     }
 
     @Override
-    public void addEdge(T source, T destination, int weight) {
-        Vertex<T> sourceVertex = addVertex(source);
-        Vertex<T> destinationVertex = addVertex(destination);
+    public void addEdge(T source, T destination, double weight) {
+        Vertex<T> sourceVertex = addComparableVertex(source);
+        Vertex<T> destinationVertex = addComparableVertex(destination);
 
         Edge<T> sourceToDest = new WeightedEdge<>(destinationVertex, weight);
         Edge<T> destToSource = new WeightedEdge<>(sourceVertex, weight);

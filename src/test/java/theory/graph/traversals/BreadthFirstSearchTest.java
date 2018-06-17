@@ -43,7 +43,7 @@ public class BreadthFirstSearchTest {
             public void bfs__undirGraph_shortestPath_validPath() {
                 Set<String> aToD = bfs.findShortestPath(unDirGraph, "A", "D");
                 assertFalse(aToD.isEmpty());
-                assertTrue(aToD.size() == 4);
+                assertEquals(4, aToD.size());
                 assertEquals(new HashSet(Arrays.asList("A", "B", "F", "D")), aToD);
             }
         }
@@ -111,13 +111,13 @@ public class BreadthFirstSearchTest {
         }
 
         @Nested
-        @DisplayName("invalid paths")
+        @DisplayName("valid paths")
         class ValidPathTest {
             @Test
             public void bfs_diGraph_shortestPath_validPath() {
                 Set<String> aToC = bfs.findShortestPath(diGraph, "A", "C");
                 assertFalse(aToC.isEmpty());
-                assertTrue(aToC.size() == 2);
+                assertEquals(2, aToC.size());
                 assertEquals(new HashSet(Arrays.asList("A", "C")), aToC);
             }
         }

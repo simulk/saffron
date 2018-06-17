@@ -23,7 +23,7 @@ public class DepthFirstSearch<T> {
             if (curr.getName().equals(destination)) {
                 return true;
             }
-            graph.getVertex(curr.getName()).getEdges().forEach(edge -> {
+            curr.getEdges().forEach(edge -> {
                 if (!edge.getDestination().isVisited()) {
                     edge.getDestination().setVisited(true);
                     edge.getDestination().setParent(curr);

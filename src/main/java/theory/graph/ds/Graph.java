@@ -15,13 +15,22 @@ public abstract class Graph<T> {
 
     public abstract void addEdge(T source, T destination);
     public abstract boolean removeEdge(T source, T destination);
-    public abstract void addEdge(T source, T destination, int weight);
+    public abstract void addEdge(T source, T destination, double weight);
 
     public Vertex<T> addVertex(T name) {
         if (adjacencyMap.containsKey(name)) {
             return adjacencyMap.get(name);
         }
         Vertex<T> vertex = new Vertex<>(name);
+        this.adjacencyMap.put(vertex.getName(), vertex);
+        return vertex;
+    }
+
+    public Vertex<T> addComparableVertex(T name) {
+        if (adjacencyMap.containsKey(name)) {
+            return adjacencyMap.get(name);
+        }
+        Vertex<T> vertex = new ComparableVertex<>(name);
         this.adjacencyMap.put(vertex.getName(), vertex);
         return vertex;
     }
