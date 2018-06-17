@@ -60,6 +60,16 @@ public class DepthFirstSearchTest {
             }
 
             @Test
+            public void dfs_diGraph_pathExists_missingSrc() {
+                assertFalse(dfs.pathExists(unDirGraph, "X", "A"));
+            }
+
+            @Test
+            public void dfs_diGraph_pathExists_missingDest() {
+                assertFalse(dfs.pathExists(unDirGraph, "A", "X"));
+            }
+
+            @Test
             public void dfs_diGraph_pathExists_nullDest() {
                 try {
                     dfs.pathExists(unDirGraph, "A", null);
@@ -122,6 +132,16 @@ public class DepthFirstSearchTest {
             @Test
             public void dfs_diGraph_pathExists_invalidDest() {
                 assertFalse(dfs.pathExists(diGraph, "A", "invalid"));
+            }
+
+            @Test
+            public void dfs_diGraph_pathExists_missingSrc() {
+                assertFalse(dfs.pathExists(diGraph, "X", "A"));
+            }
+
+            @Test
+            public void dfs_diGraph_pathExists_missingDest() {
+                assertFalse(dfs.pathExists(diGraph, "A", "X"));
             }
 
             @Test

@@ -64,7 +64,19 @@ public class BreadthFirstSearchTest {
             }
 
             @Test
-            public void bfs_diGraph_shortestPath_nullDest() {
+            public void bfs_unDirGraph_shortestPath_missingSrc() {
+                Set<String> noPath = bfs.findShortestPath(unDirGraph, "X", "A");
+                assertTrue(noPath.isEmpty());
+            }
+
+            @Test
+            public void bfs_unDirGraph_shortestPath_missingDest() {
+                Set<String> noPath = bfs.findShortestPath(unDirGraph, "A", "X");
+                assertTrue(noPath.isEmpty());
+            }
+
+            @Test
+            public void bfs_unDirGraph_shortestPath_nullDest() {
                 try {
                     bfs.findShortestPath(unDirGraph, "A", null);
                     fail("should have thrown IllegalArgumentException");
@@ -73,7 +85,7 @@ public class BreadthFirstSearchTest {
                 }
             }
             @Test
-            public void bfs_diGraph_shortestPath_nullGraph() {
+            public void bfs_unDirGraph_shortestPath_nullGraph() {
                 try {
                     bfs.findShortestPath(null, "A", "B");
                     fail("should have thrown IllegalArgumentException");
@@ -122,6 +134,18 @@ public class BreadthFirstSearchTest {
             @Test
             public void bfs_diGraph_shortestPath_invalidPath_sameSrcDest() {
                 Set<String> noPath = bfs.findShortestPath(diGraph, "A", "A");
+                assertTrue(noPath.isEmpty());
+            }
+
+            @Test
+            public void bfs_diGraph_shortestPath_missingSrc() {
+                Set<String> noPath = bfs.findShortestPath(diGraph, "X", "A");
+                assertTrue(noPath.isEmpty());
+            }
+
+            @Test
+            public void bfs_diGraph_shortestPath_missingDest() {
+                Set<String> noPath = bfs.findShortestPath(diGraph, "A", "X");
                 assertTrue(noPath.isEmpty());
             }
 

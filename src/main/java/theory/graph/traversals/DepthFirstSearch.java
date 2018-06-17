@@ -13,6 +13,7 @@ public class DepthFirstSearch<T> {
         }
 
         Vertex<T> srcVertex = graph.getVertex(source);
+        if (srcVertex == null) { return false; }
         Stack<Vertex<T>> stack = new Stack<>();
         stack.add(srcVertex);
 

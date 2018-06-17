@@ -17,6 +17,7 @@ public class BreadthFirstSearch<T> {
         }
 
         Vertex<T> srcVertex = graph.getVertex(source);
+        if (srcVertex == null) { return Collections.emptySet(); }
         Queue<Vertex<T>> queue = new LinkedList<>();
         queue.add(srcVertex);
 
