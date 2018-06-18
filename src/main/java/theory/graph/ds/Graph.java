@@ -39,7 +39,11 @@ public abstract class Graph<T> {
         return this.adjacencyMap.get(name);
     }
 
-    public Set<Edge<T>> getVertices(T name) {
+    public Set<T> getVertices() {
+        return this.adjacencyMap.keySet();
+    }
+
+    public Set<Edge<T>> getEdges(T name) {
         Vertex<T> vertex = this.adjacencyMap.getOrDefault(name, null);
         if (null != vertex) {
             return this.adjacencyMap.get(name).getEdges();
