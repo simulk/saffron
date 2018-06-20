@@ -1,9 +1,9 @@
-package theory.graph.traversals;
+package theory.graph.applications;
 
 import theory.graph.ds.Graph;
 import theory.graph.ds.Vertex;
 import theory.graph.ds.WeightedEdge;
-import theory.graph.ds.exception.NegativeCycleException;
+import theory.graph.applications.exception.NegativeCycleException;
 
 import java.util.*;
 

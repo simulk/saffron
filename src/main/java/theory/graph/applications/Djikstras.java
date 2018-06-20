@@ -1,13 +1,16 @@
-package theory.graph.traversals;
+package theory.graph.applications;
 
 import theory.graph.ds.ComparableVertex;
 import theory.graph.ds.Graph;
 import theory.graph.ds.Vertex;
 import theory.graph.ds.WeightedEdge;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
 
-public class Djikstras<T> {
+public class Djikstras<T> extends SingleSourceShortestPath<T> {
 
     public Set<T> findShortestPath(Graph<T> graph, T source, T destination) {
         if (graph == null || source == null || destination == null) {
@@ -44,22 +47,6 @@ public class Djikstras<T> {
             prev.setVisited(true);
         }
 
-        Stack<T> stack = new Stack<>();
-        while(!destVertex.getName().equals(source)) {
-            stack.push(destVertex.getName());
-            destVertex = destVertex.getParent();
-            if (destVertex == null) {
-                //no path exists
-                return Collections.emptySet();
-            }
-        }
-        stack.push(source);
-
-        Set<T> path = new LinkedHashSet<>();
-        while(!stack.isEmpty()) {
-            path.add(stack.pop());
-        }
-        return path;
+        return constructPath(source, destVertex);
     }
-
 }

@@ -1,17 +1,15 @@
-package theory.graph.traversals;
+package theory.graph.applications;
 
 import theory.graph.ds.ComparableVertex;
 import theory.graph.ds.Graph;
 import theory.graph.ds.Vertex;
 import theory.graph.ds.WeightedEdge;
-import theory.graph.ds.exception.NegativeCycleException;
+import theory.graph.applications.exception.NegativeCycleException;
 
 import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.Stack;
 
-public class BellmanFord<T> {
+public class BellmanFord<T> extends SingleSourceShortestPath<T> {
 
     public Set<T> findShortestPath(Graph<T> graph, T source, T destination) {
         if (graph == null || source == null || destination == null) {
@@ -52,21 +50,6 @@ public class BellmanFord<T> {
             });
         }
 
-        Stack<T> stack = new Stack<>();
-        while(!destVertex.getName().equals(source)) {
-            stack.push(destVertex.getName());
-            destVertex = destVertex.getParent();
-            if (destVertex == null) {
-                //no path exists
-                return Collections.emptySet();
-            }
-        }
-        stack.push(source);
-
-        Set<T> path = new LinkedHashSet<>();
-        while(!stack.isEmpty()) {
-            path.add(stack.pop());
-        }
-        return path;
+        return constructPath(source, destVertex);
     }
 }

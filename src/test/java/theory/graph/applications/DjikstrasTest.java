@@ -1,6 +1,7 @@
-package theory.graph.traversals;
+package theory.graph.applications;
 
 import org.junit.jupiter.api.*;
+import theory.graph.applications.Djikstras;
 import theory.graph.ds.DirectedGraph;
 import theory.graph.ds.Graph;
 import theory.graph.ds.UndirectedGraph;
