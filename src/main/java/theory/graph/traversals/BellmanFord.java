@@ -1,6 +1,10 @@
 package theory.graph.traversals;
 
-import theory.graph.ds.*;
+import theory.graph.ds.ComparableVertex;
+import theory.graph.ds.Graph;
+import theory.graph.ds.Vertex;
+import theory.graph.ds.WeightedEdge;
+import theory.graph.ds.exception.NegativeCycleException;
 
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -43,7 +47,7 @@ public class BellmanFord<T> {
                 ComparableVertex<T> curr = (ComparableVertex<T>) edge.getDestination();
                 double prevDist = ((WeightedEdge<T>)edge).getWeight() + prev.getDistance();
                 if (curr.getDistance() > prevDist) {
-                    throw new BellmanFordNegativeCycleException("Graph contains negative cycle");
+                    throw new NegativeCycleException("Graph contains negative cycle");
                 }
             });
         }
@@ -64,11 +68,5 @@ public class BellmanFord<T> {
             path.add(stack.pop());
         }
         return path;
-    }
-
-    public static class BellmanFordNegativeCycleException extends RuntimeException {
-        public BellmanFordNegativeCycleException(String message) {
-            super(message);
-        }
     }
 }
